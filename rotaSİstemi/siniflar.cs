@@ -28,7 +28,7 @@ namespace rotaSİstemi
         {
             public Ogrenci(string ad) : base(ad)
             {
-                IndirimOrani = 0.5; // %50 indirim
+                IndirimOrani = 0.5; 
             }
 
             public override double UcretHesapla(double temelUcret)
@@ -41,7 +41,7 @@ namespace rotaSİstemi
         {
             public Yasli(string ad) : base(ad)
             {
-                IndirimOrani = 0.75; // %75 indirim
+                IndirimOrani = 0.75; 
             }
 
             public override double UcretHesapla(double temelUcret)
@@ -54,7 +54,7 @@ namespace rotaSİstemi
         {
             public Genel(string ad) : base(ad)
             {
-                IndirimOrani = 0; // İndirimsiz
+                IndirimOrani = 0; 
             }
 
             public override double UcretHesapla(double temelUcret)
@@ -77,7 +77,7 @@ namespace rotaSİstemi
             public Otobus()
             {
                 AracTuru = "Otobüs";
-                TemelUcret = 0; // Ücret JSON'dan gelecek
+                TemelUcret = 0; 
             }
 
             public override double MaliyetHesapla(double mesafe)
@@ -90,12 +90,12 @@ namespace rotaSİstemi
             public Yaya()
             {
                 AracTuru = "Yaya";
-                TemelUcret = 0; // Ücret JSON'dan gelecek
+                TemelUcret = 0; 
             }
 
             public override double MaliyetHesapla(double mesafe)
             {
-                return 0; // Ücret JSON'dan dinamik olarak atanacak
+                return 0; 
             }
         }
 
@@ -261,7 +261,7 @@ namespace rotaSİstemi
             private List<Durak> duraklar;
             private TaksiBilgisi taksiBilgisi;
             private const double TaksiEsikDegeri = 3.0;
-            private const double AktarmaIndirimi = 0.5; // %50 indirim aktarmada
+            private const double AktarmaIndirimi = 0.5; 
 
             public RotaHesaplayici()
             {
@@ -401,9 +401,9 @@ namespace rotaSİstemi
 
             public List<(string Aciklama, List<RotaAdimi> Rota, double Maliyet, int Sure, double Mesafe)> RotaPlanla(Yolcu yolcu, Konum baslangic, Konum bitis)
             {
-                const double YURUYUS_Esik_Degeri = 3.0; // 3 km'den azsa yürü
-                const double YURUYUS_HIZI = 0.083; // 5 km/saat = 0.083 km/dk
-                const double AktarmaIndirimi = 0.5; // %50 aktarma indirimi
+                const double YURUYUS_Esik_Degeri = 3.0; 
+                const double YURUYUS_HIZI = 0.083; 
+                const double AktarmaIndirimi = 0.5; 
 
                 List<(string, List<RotaAdimi>, double, int, double)> alternatifRotalar = new List<(string, List<RotaAdimi>, double, int, double)>();
                 Taksi taksi = new Taksi(taksiBilgisi.AcilisUcreti, taksiBilgisi.KmBasiUcret);
@@ -423,7 +423,6 @@ namespace rotaSİstemi
                     .OrderBy(d => MesafeHesapla(bitis, new Konum { Enlem = d.Enlem, Boylam = d.Boylam }))
                     .FirstOrDefault();
 
-                // Başlangıç ve bitiş adımları ekleme yardımcı metodu
                 List<RotaAdimi> AddInitialAndFinalSteps(Durak baslangicDurak, Durak bitisDurak, List<RotaAdimi> rota,
                     Konum baslangicKonum, Konum bitisKonum, ref double maliyetEk, ref int sureEk, ref double mesafeEk, ref bool taksiVeyaYayaKullanildiFlag)
                 {
@@ -464,26 +463,20 @@ namespace rotaSİstemi
                             maliyetEk += taksiUcret;
                             sureEk += (int)(baslangicMesafesi * 2);
                             mesafeEk += baslangicMesafesi;
-                            taksiVeyaYayaKullanildiFlag = true; // Taksi kullanıldı
+                            taksiVeyaYayaKullanildiFlag = true; 
                         }
                     }
                     else if (baslangicMesafesi > 0 && taksiVeyaYayaKullanildiFlag)
                     {
-                        // Taksi veya yürüme daha önce kullanıldı, bu yüzden başlangıç durağına ulaşılmaz kabul edilir
-                        return new List<RotaAdimi>(); // Boş rota döndürerek bu seçeneği geçersiz kıl
+                        return new List<RotaAdimi>(); 
                     }
 
                     yeniRota.AddRange(rota);
 
-                    if (bitisMesafesi > 0 && !taksiVeyaYayaKullanildiFlag)
+                  
+                     if (bitisMesafesi > 0 && taksiVeyaYayaKullanildiFlag)
                     {
-                        // Eğer taksi veya yürüme başlangıçta kullanılmadıysa, burada kullanılabilir ama biz sadece başta kullanmak istiyoruz
-                        // Bu yüzden bitişte taksi veya yürüme eklemiyoruz
-                    }
-                    else if (bitisMesafesi > 0 && taksiVeyaYayaKullanildiFlag)
-                    {
-                        // Taksi veya yürüme zaten kullanıldı, bitiş mesafesi için bir şey yapmıyoruz
-                        return new List<RotaAdimi>(); // Boş rota döndürerek bu seçeneği geçersiz kıl
+                        return new List<RotaAdimi>(); 
                     }
 
                     return yeniRota;
@@ -616,8 +609,8 @@ namespace rotaSİstemi
 
                 // Tüm alternatif rotaları döndür
                 return alternatifRotalar
-                    .Where(r => r.Item2 != null && r.Item2.Any()) // Boş rotaları filtrele
-                    .Distinct() // Aynı rotaların tekrarını engelle
+                    .Where(r => r.Item2 != null && r.Item2.Any()) 
+                    .Distinct()
                     .ToList();
             }
         }
