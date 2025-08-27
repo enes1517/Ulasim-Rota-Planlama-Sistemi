@@ -16,7 +16,7 @@ Veri: JSON dosyaları (duraklar.json için veri kaynağı).
 Araçlar: Visual Studio (.sln, .csproj ile).
 Bağımlılıklar: Temel .NET kütüphaneleri, JSON.NET gibi
 Kurulum Gereklilikleri
-.NET Framework 
+.NET Framework  
 Visual Studio.
 Nasıl Çalıştırılır
 Depoyu klonlayın: git clone https://github.com/enes1517/Ulasim-Rota-Planlama-Sistemi.git.
