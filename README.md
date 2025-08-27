@@ -9,7 +9,7 @@ Tasarım Araçları: ClassDiagram.cd ile sınıf diyagramı, mimari görselleşt
 Giriş Noktası: Program.cs ile uygulama başlatma ve ana form yükleme.
 Gelişmiş Özellikler: Potansiyel olarak trafik verisi entegrasyonu, maliyet hesabı ve rota görselleştirme .
 Hata İşleme: Geçersiz durak veya rota için uyarılar, JSON parse hataları yakalama.
-Kullanılan Teknolojiler
+Kullanılan Teknolojiler  
 Dil ve Çerçeve: C# .NET Framework
 UI: Windows Forms (Form1.cs ve tasarımı).
 Veri: JSON dosyaları (duraklar.json için veri kaynağı).
