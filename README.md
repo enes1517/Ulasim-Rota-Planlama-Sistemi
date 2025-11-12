@@ -1,50 +1,68 @@
-Bu proje, toplu taşıma veya lojistik için rota planlama sistemi olarak geliştirilmiştir. 
+Ulaşım Rota Planlama Sistemi
 
-Duraklar arasında en kısa veya en uygun rotaları hesaplar, JSON verileriyle dinamik veri yükler. C# ve Windows Forms ile masaüstü uygulamasıdır, graf algoritmaları Dijkstra kullanarak rota optimizasyonu yapar. Eğitim veya küçük ölçekli ulaşım planlaması için uygundur. 
+Bu proje, C# Windows Forms ve Dijkstra'nın graf algoritması kullanılarak geliştirilmiş bir masaüstü rota optimizasyon sistemidir. Toplu taşıma veya küçük ölçekli lojistik ağları için duraklar arasındaki en kısa veya en verimli rotayı hesaplamak üzere tasarlanmıştır.
 
-Proje, durak verilerini JSON'dan okuyarak gerçek zamanlı rota önerileri sunar ve potansiyel olarak harita entegrasyonu ile genişletilebilir.
-
-Kod yapısı, sınıf tabanlı bir yaklaşım gösterir ve veri işleme ile kullanıcı arayüzünü ayırır. Bu, sistemi modüler kılar ve yeni algoritmalar eklemeyi kolaylaştırır.
-
-Özellikler  
-
-Rota Hesaplama: Başlangıç ve bitiş durakları girilerek rota önerisi, mesafe/zaman hesabı, alternatif rotalar. (siniflar.cs'te algoritma sınıfları tanımlanır)
-
-Durak Yönetimi: duraklar.json'dan veri yükleme, durak ekleme/güncelleme/silme işlemleri.Kullanıcı Arayüzü: Form1 ile giriş/çıkış seçimleri (ComboBox veya TextBox), rota görüntüleme (ListBox veya metin tabanlı harita).
-
-Veri Depolama: JSON dosyaları ile hafif ve taşınabilir veri yönetimi.
-
-Tasarım Araçları: ClassDiagram.cd ile sınıf diyagramı, mimari görselleştirme ve planlama.
-
-Giriş Noktası: Program.cs ile uygulama başlatma ve ana form yükleme.
-
-Gelişmiş Özellikler: Potansiyel olarak trafik verisi entegrasyonu, maliyet hesabı ve rota görselleştirme .
-
-Hata İşleme: Geçersiz durak veya rota için uyarılar, JSON parse hataları yakalama.
-
-Kullanılan Teknolojiler  
-
-Dil ve Çerçeve: C# .NET Framework
-
-UI: Windows Forms (Form1.cs ve tasarımı).
-
-Veri: JSON dosyaları (duraklar.json için veri kaynağı).
-
-Araçlar: Visual Studio (.sln, .csproj ile).
-
-Bağımlılıklar: Temel .NET kütüphaneleri, JSON.NET gibi
-
-Kurulum Gereklilikleri
-
-.NET Framework  
-
-Visual Studio.
-
-Nasıl Çalıştırılır
-
-Depoyu klonlayın: git clone https://github.com/enes1517/Ulasim-Rota-Planlama-Sistemi.git.
-
-rotaSİstemi.sln'i Visual Studio'da açın.
+Sistem, tüm durak ve bağlantı verilerini harici bir duraklar.json dosyasından dinamik olarak yükler. Bu, veri yönetimini kolaylaştırır ve sistemi esnek kılar.
 
 
-Proje Reporu Dosyada Mevcuttur.
+✨ Temel Özellikler
+Optimize Edilmiş Rota Hesaplama: Dijkstra algoritmasını kullanarak başlangıç ve bitiş durakları arasındaki en verimli rotayı (en kısa mesafe/süre) hesaplar.
+
+Dinamik Veri Yükleme: Tüm durak ve rota bilgilerini duraklar.json dosyasından okuyarak sistemi dinamik ve kolayca güncellenebilir hale getirir.
+
+Modüler Mimari: Kod yapısı, veri işleme (siniflar.cs içindeki algoritmalar) ve kullanıcı arayüzünü (Form1.cs) ayırarak modüler bir yaklaşım sergiler.
+
+Basit Kullanıcı Arayüzü: Windows Forms üzerinden başlangıç ve bitiş duraklarının seçilmesine ve sonucun net bir şekilde görüntülenmesine olanak tanır.
+
+Genişletilebilirlik: Altyapısı, ileride trafik verisi entegrasyonu, maliyet hesabı veya harita servisleriyle görselleştirme gibi gelişmiş özellikler eklemeye uygundur.
+
+Hata Yönetimi: Geçersiz durak girişleri veya rota bulunamaması gibi durumlar için temel hata yakalama mekanizmalarına sahiptir.
+
+🛠️ Kullanılan Teknolojiler
+Programlama Dili: C#
+
+Çerçeve (Framework): .NET Framework
+
+Kullanıcı Arayüzü (UI): Windows Forms
+
+Temel Algoritma: Dijkstra Graf Algoritması
+
+Veri Depolama: JSON (Veri kaynağı olarak duraklar.json)
+
+Geliştirme Ortamı: Visual Studio (.sln, .csproj)
+
+🏁 Kurulum ve Çalıştırma
+Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
+
+Gereksinimler
+.NET Framework (Projenin .csproj dosyasında belirtilen sürümle uyumlu)
+
+
+Adımlar
+Öncelikle bu depoyu makinenize klonlayın:
+
+git clone https://github.com/enes1517/Ulasim-Rota-Planlama-Sistemi.git
+Klonlanan klasörün içine girin:
+
+
+cd Ulasim-Rota-Planlama-Sistemi
+rotaSİstemi.sln çözüm (solution) dosyasını Visual Studio ile açın.
+
+Visual Studio'nun gerekli bağımlılıkları (örn: JSON.NET kütüphanesi) otomatik olarak geri yüklemesini bekleyin.
+
+Projeyi Start (Başlat) butonuna basarak (veya F5 tuşu ile) derleyin ve çalıştırın.
+
+📂 Önemli Proje Dosyaları
+Program.cs: Uygulamanın ana giriş noktasıdır (Entry Point). Form1'i başlatır.
+
+Form1.cs: Ana kullanıcı arayüzü formudur. Kullanıcıdan girdileri (başlangıç/bitiş durakları) alır ve rota sonuçlarını gösterir.
+
+siniflar.cs: Projenin iş mantığını ve çekirdek algoritmalarını (Dijkstra) içeren sınıfları barındırır.
+
+duraklar.json: Durakları, aralarındaki mesafeleri ve bağlantıları içeren ana veri kaynağıdır.
+
+ClassDiagram.cd: Projenin sınıf mimarisini görselleştiren sınıf diyagramı dosyasıdır.
+
+duraklar.json: Durakları, aralarındaki mesafeleri ve bağlantıları içeren ana veri kaynağıdır.
+
+ClassDiagram.cd: Projenin sınıf mimarisini görselleştiren sınıf diyagramı dosyasıdır.
